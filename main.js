@@ -2,13 +2,16 @@ const svg = document.getElementById('signature'),
   NS = 'http://www.w3.org/2000/svg';
 let isDrawing = false,
   points = [],
-  pathEl = null;
+  pathEl = null,
+  startTime = 0,
+  endTime = 0;
 function getPos(e) {
   const r = svg.getBoundingClientRect();
   return { x: e.clientX - r.left, y: e.clientY - r.top };
 }
 function start(e) {
   isDrawing = true;
+  startTime = Date.now();
   points = [getPos(e)];
   pathEl = document.createElementNS(NS, 'path');
   pathEl.classList.add('stroke', 'hidden');
@@ -23,6 +26,7 @@ function draw(e) {
 function stop() {
   if (!isDrawing) return;
   isDrawing = false;
+  endTime = Date.now();
   animatePath(pathEl);
   pathEl = null;
   points = [];
@@ -46,7 +50,8 @@ function animatePath(el) {
     document.head.appendChild(style);
   }
   style.sheet.insertRule(keyframes, style.sheet.cssRules.length);
-  el.style.animation = `${animName} 2s ease-out forwards`;
+  timeDiff = (endTime - startTime) / 1000;
+  el.style.animation = `${animName} ${timeDiff}s ease-in-out forwards`;
 }
 svg.addEventListener('pointerdown', start);
 svg.addEventListener('pointermove', draw);

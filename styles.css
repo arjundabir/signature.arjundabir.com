@@ -21,7 +21,7 @@ body {
 }
 .stroke {
   stroke: #000;
-  stroke-width: 6;
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;

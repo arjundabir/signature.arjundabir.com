@@ -17,7 +17,7 @@ function start(e) {
   startTime = Date.now();
   points = [getPos(e)];
   pathEl = document.createElementNS(NS, 'path');
-  pathEl.classList.add('stroke', 'hidden');
+  pathEl.classList.add('stroke');
   svg.appendChild(pathEl);
 }
 function draw(e) {
@@ -76,7 +76,6 @@ function animateSignature() {
       from { stroke-dashoffset: ${len}; }
       to { stroke-dashoffset: 0; }
     }`;
-
     style.sheet.insertRule(keyframes, style.sheet.cssRules.length);
 
     el.style.animation = `${animName} ${duration}s ease-in-out forwards ${currentDelay}s`;

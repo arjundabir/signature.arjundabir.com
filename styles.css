@@ -1,17 +1,3 @@
-body {
-  font-family: system-ui, -apple-system, Inter, Arial;
-  margin: 0;
-  padding: 0;
-  background: #fff;
-  color: #000;
-  line-height: 1.6;
-  height: calc(
-    100vh - 16px
-  ); // TODO @arjundabir: figure out why we subtract by 16px to match arjundabir.com/blog
-  display: flex;
-  flex-direction: column;
-}
-
 .stroke {
   stroke: #000;
   stroke-width: 1;
@@ -19,6 +5,8 @@ body {
   stroke-linejoin: round;
   fill: none;
 }
+
+// --- footer styling ---
 
 .logoPath {
   width: 100%;

@@ -12,26 +12,32 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <main class="container">
-      <header class="header">
-        <h1 class="title">Animate Signature</h1>
-        <p class="subtitle">
+    <main class="mx-auto container max-w-[600px] p-4">
+      <header class="leading-6 text-base">
+        <h1 class="font-medium">Animate Signature</h1>
+        <p class="text-gray-500">
           Convert your handwriting to HTML/CSS that you can add anywhere
         </p>
       </header>
 
-      <div id="container">
-        <svg id="signature"></svg>
+      <div
+        id="container"
+        class="mx-auto w-full h-[200px] border border-gray-200 bg-white relative rounded shadow-sm"
+      >
+        <svg id="signature" class="w-full h-full"></svg>
       </div>
 
-      <div class="controls">
-        <button id="play-button" class="button">Animate Signature</button>
-      </div>
+      <button
+        id="play-button"
+        class="mt-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-gray-100 text-black shadow-xs hover:bg-gray-100/80 h-9 px-4 py-2 has-[>svg]:px-3 hover:no-underline"
+      >
+        Animate Signature
+      </button>
 
       <div id="code" />
     </main>
-    <footer class="footer">
-      <a href="https://arjundabir.com">
+    <footer class="flex-none max-h-10 p-8 flex justify-center mt-auto">
+      <a href="https://arjundabir.com" class="inline-block size-10">
         <svg
           id="Layer_1"
           class="logoPath"

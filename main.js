@@ -8,6 +8,22 @@ let isDrawing = false,
   pathEl = null,
   startTime = 0,
   endTime = 0;
+const codeHTML = (code, type) => {
+  const codeId = `code-${type.toLowerCase()}-${Date.now()}`;
+  return `<h3 class="mb-2 text-base font-medium">${type}</h3>
+<div class="relative">
+  <pre class="m-0"><code class="select-all block p-4 bg-gray-100 rounded overflow-x-auto" id="${codeId}">${escapeHtml(
+    code
+  )}</code></pre>
+  <button 
+    onclick="navigator.clipboard.writeText(document.getElementById('${codeId}').textContent)"
+    class="absolute top-2 right-2 p-2 bg-transparent border-none cursor-pointer opacity-60 rounded flex items-center justify-center hover:opacity-100" 
+  >
+    <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-copy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg>
+  </button>
+</div>`;
+};
+
 function getPos(e) {
   const r = svg.getBoundingClientRect();
   return { x: e.clientX - r.left, y: e.clientY - r.top };
@@ -117,18 +133,10 @@ function animateSignature() {
 
   // Display HTML and CSS in the code div
   code.innerHTML = `
-    <div style="margin-top: 2rem;">
-      <h3 style="margin-bottom: 0.5rem; font-size: 16px; font-weight: 500; margin: 0;">HTML:</h3>
-      <pre style="margin: 0;"><code style="display: block; padding: 1rem; background: #f5f5f5; border-radius: 4px; overflow-x: auto;">${escapeHtml(
-        htmlContent
-      )}</code></pre>
-    </div>
-    <div style="margin-top: 2rem;">
-      <h3 style="font-size: 16px; font-weight: 500; margin: 0;">CSS:</h3>
-      <pre style="margin: 0;"><code style="display: block; padding: 1rem; background: #f5f5f5; border-radius: 4px; overflow-x: auto;">${escapeHtml(
-        cssContent
-      )}</code></pre>
-    </div>
+  <div class="relative mt-8">
+  ${codeHTML(htmlContent, 'HTML')}
+  ${codeHTML(cssContent, 'CSS')}
+  </div>
   `;
 }
 

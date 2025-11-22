@@ -6,6 +6,10 @@
   fill: none;
 }
 
+#container {
+  touch-action: none;
+}
+
 // --- footer styling ---
 
 .logoPath {

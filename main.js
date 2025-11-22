@@ -117,6 +117,13 @@ function animateSignature() {
     const duration = strokeTimes[index];
     const animName = `draw-${index}`;
 
+    cssContent += `.stroke {
+  stroke: #000;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+} \n\n`;
     cssContent += `@keyframes ${animName} {\n`;
     cssContent += `  from { stroke-dashoffset: ${len}; }\n`;
     cssContent += `  to { stroke-dashoffset: 0; }\n`;
